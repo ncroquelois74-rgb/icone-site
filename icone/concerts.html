@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Concerts — Chœur Icône</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav-inner">
+    <a href="index.html" class="site-logo">Chœur<span> Icône</span></a>
+    <button class="nav-toggle" aria-label="Ouvrir le menu" onclick="toggleMenu(this)"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Bienvenue</a></li>
+      <li><a href="presentation.html">Présentation</a></li>
+      <li><a href="repertoire.html">Répertoire</a></li>
+      <li><a href="concerts.html" class="active">Concerts</a></li>
+      <li><a href="convivialite.html">Convivialité</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <section class="page-hero" style="background:linear-gradient(135deg,#C84010 0%,#E06020 60%,#F0A030 100%);">
+    <h1>Les Concerts</h1>
+    <p>Vingt ans de scène, de musique et de souvenirs partagés</p>
+  </section>
+
+  <!-- Photo principale -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Le Chœur Icône en concert</h2>
+        <p>Quelques images des saisons passées</p>
+      </div>
+      <div style="border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-hover); max-width:800px; margin:0 auto;">
+        <img src="http://choeuricone.free.fr/Icone/Bienvenue_files/Accueil.jpg" alt="Le Chœur Icône en concert" style="width:100%; height:auto;">
+      </div>
+    </div>
+  </section>
+
+  <!-- YouTube -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="yt-cta">
+        <h3>Nos vidéos sur YouTube</h3>
+        <p>Retrouvez tous nos extraits de concerts sur notre chaîne YouTube — des années passées aux dernières prestations.</p>
+        <a href="https://www.youtube.com/user/ChoeurIcone/videos" target="_blank" rel="noopener" class="btn-yt">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+          Voir la chaîne ChoeurIcone
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Extraits vidéo -->
+  <section class="section videos-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Quelques extraits</h2>
+        <p>Un aperçu de nos concerts des années précédentes</p>
+      </div>
+      <div class="videos-grid">
+                <div class="video-card"><a class="yt-thumb" href="https://www.youtube.com/watch?v=R2TCXdSORWU" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/R2TCXdSORWU/hqdefault.jpg" alt="Vidéo Chœur Icône" loading="lazy"><div class="yt-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></a></div>
+                <div class="video-card"><a class="yt-thumb" href="https://www.youtube.com/watch?v=xP069ek9y64" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/xP069ek9y64/hqdefault.jpg" alt="Vidéo Chœur Icône" loading="lazy"><div class="yt-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></a></div>
+                <div class="video-card"><a class="yt-thumb" href="https://www.youtube.com/watch?v=Ks94IlJLULU" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/Ks94IlJLULU/hqdefault.jpg" alt="Vidéo Chœur Icône" loading="lazy"><div class="yt-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></a></div>
+                <div class="video-card"><a class="yt-thumb" href="https://www.youtube.com/watch?v=s51xKk6wfTs" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/s51xKk6wfTs/hqdefault.jpg" alt="Vidéo Chœur Icône" loading="lazy"><div class="yt-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></a></div>
+                <div class="video-card"><a class="yt-thumb" href="https://www.youtube.com/watch?v=pwwQCHZayWg" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/pwwQCHZayWg/hqdefault.jpg" alt="Vidéo Chœur Icône" loading="lazy"><div class="yt-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></a></div>
+      </div>
+      <div class="videos-footer">
+        <a href="https://www.youtube.com/user/ChoeurIcone/videos" target="_blank" rel="noopener" class="btn btn-primary">Toutes nos vidéos →</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col"><h4>Chœur Icône</h4><p>Une chorale du 19<sup>e</sup> arrondissement de Paris, fondée en septembre 2005.<br>Association loi 1901.</p></div>
+    <div class="footer-col"><h4>Navigation</h4><p><a href="index.html">Bienvenue</a><br><a href="presentation.html">Présentation</a><br><a href="repertoire.html">Répertoire 2026-2027</a><br><a href="concerts.html">Concerts</a><br><a href="convivialite.html">Convivialité</a></p></div>
+    <div class="footer-col"><h4>Contact</h4><p><a href="mailto:choeur.icone@gmail.com">choeur.icone@gmail.com</a><br>Répétitions : mardis 20h–22h<br>Métro Stalingrad/Riquet, Paris 19<sup>e</sup></p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Chœur Icône — <a href="mailto:choeur.icone@gmail.com">Nous contacter</a></p></div>
+</footer>
+<script>
+function toggleMenu(btn){const nav=document.getElementById('navLinks');nav.classList.toggle('open');btn.setAttribute('aria-expanded',nav.classList.contains('open'));}
+document.addEventListener('click',function(e){if(!document.querySelector('.site-header').contains(e.target))document.getElementById('navLinks').classList.remove('open');});
+</script>
+</body>
+</html>

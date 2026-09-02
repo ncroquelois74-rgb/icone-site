@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Convivialité — Chœur Icône</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav-inner">
+    <a href="index.html" class="site-logo">Chœur<span> Icône</span></a>
+    <button class="nav-toggle" aria-label="Ouvrir le menu" onclick="toggleMenu(this)"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Bienvenue</a></li>
+      <li><a href="presentation.html">Présentation</a></li>
+      <li><a href="repertoire.html">Répertoire</a></li>
+      <li><a href="concerts.html">Concerts</a></li>
+      <li><a href="convivialite.html" class="active">Convivialité</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <section class="page-hero" style="background:linear-gradient(135deg,#C84010 0%,#E8702A 60%,#F0A030 100%);">
+    <h1>La Convivialité</h1>
+    <p>Parce qu'une chorale, c'est aussi des amis, des rires et des souvenirs</p>
+  </section>
+
+  <section class="section" style="padding-bottom:32px;">
+    <div class="container">
+      <div class="conviv-intro">
+        <p>Le Chœur Icône, c'est bien plus que des répétitions et des concerts. C'est une communauté chaleureuse qui se retrouve, partage et grandit ensemble depuis 2005.</p>
+        <p>Des soirées de répétition aux fêtes de la Musique, des pots d'après-concert aux sorties en groupe — chaque moment passé ensemble tisse un peu plus notre histoire commune.</p>
+        <p style="margin-bottom:0;">Cliquez sur une photo pour l'agrandir.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="gallery-grid" id="gallery">
+        <div class="gallery-item" onclick="openLightbox(0)"><img src="media/convivialite//WhatsApp%20Image%202025-03-08%20at%2018.15.17.jpg" alt="Moment convivial 2025" loading="lazy"><div class="overlay"></div></div>
+        <div class="gallery-item" onclick="openLightbox(1)"><img src="media/convivialite//WhatsApp%20Image%202025-03-08%20at%2022.20.32.jpg" alt="Moment convivial 2025" loading="lazy"><div class="overlay"></div></div>
+        <div class="gallery-item" onclick="openLightbox(2)"><img src="media/convivialite//IMG-20231203-WA0002.jpg" alt="Décembre 2023" loading="lazy"><div class="overlay"></div></div>
+        <div class="gallery-item" onclick="openLightbox(3)"><img src="media/convivialite//IMG-20231203-WA0003.jpg" alt="Décembre 2023" loading="lazy"><div class="overlay"></div></div>
+        <div class="gallery-item" onclick="openLightbox(4)"><img src="media/convivialite//Presentation1.jpg" alt="Présentation" loading="lazy"><div class="overlay"></div></div>
+        <div class="gallery-item" onclick="openLightbox(5)"><img src="media/convivialite//P1020858.jpg" alt="Répétition" loading="lazy"><div class="overlay"></div></div>
+        <div class="gallery-item" onclick="openLightbox(6)"><img src="media/convivialite//P1020850.jpg" alt="Chœur Icône" loading="lazy"><div class="overlay"></div></div>
+        <div class="gallery-item" onclick="openLightbox(7)"><img src="media/convivialite//P1020851.jpg" alt="Chœur Icône" loading="lazy"><div class="overlay"></div></div>
+        <div class="gallery-item" onclick="openLightbox(8)"><img src="media/convivialite//P1020854.jpg" alt="Chœur Icône" loading="lazy"><div class="overlay"></div></div>
+        <div class="gallery-item" onclick="openLightbox(9)"><img src="media/convivialite//P1020855.jpg" alt="Chœur Icône" loading="lazy"><div class="overlay"></div></div>
+        <div class="gallery-item" onclick="openLightbox(10)"><img src="media/convivialite//P1020861.jpg" alt="Chœur Icône" loading="lazy"><div class="overlay"></div></div>
+        <div class="gallery-item" onclick="openLightbox(11)"><img src="media/convivialite//P1020863.jpg" alt="Répétition février 2017" loading="lazy"><div class="overlay"></div></div>
+        <div class="gallery-item" onclick="openLightbox(12)"><img src="media/convivialite//P1020777-leveled.jpg" alt="Chœur Icône" loading="lazy"><div class="overlay"></div></div>
+        <div class="gallery-item" onclick="openLightbox(13)"><img src="media/convivialite//P1020523.jpg" alt="Chœur Icône" loading="lazy"><div class="overlay"></div></div>
+        <div class="gallery-item" onclick="openLightbox(14)"><img src="media/convivialite//P1010732-filtered.jpg" alt="Chœur Icône" loading="lazy"><div class="overlay"></div></div>
+        <div class="gallery-item" onclick="openLightbox(15)"><img src="media/convivialite//FDLM2011-01-2-leveled.jpg" alt="Fête de la Musique 2011" loading="lazy"><div class="overlay"></div></div>
+        <div class="gallery-item" onclick="openLightbox(16)"><img src="media/convivialite//FDLM2011-04-leveled.jpg" alt="Fête de la Musique 2011" loading="lazy"><div class="overlay"></div></div>
+        <div class="gallery-item" onclick="openLightbox(17)"><img src="media/convivialite//Pict0396-filtered.jpg" alt="Répétition 2007" loading="lazy"><div class="overlay"></div></div>
+        <div class="gallery-item" onclick="openLightbox(18)"><img src="media/convivialite//Pict0458-filtered.jpg" alt="Répétition 2007" loading="lazy"><div class="overlay"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div style="background:linear-gradient(135deg,#C84010,#F0A030); border-radius:var(--radius); padding:44px 36px; text-align:center; color:#fff;">
+        <h3 style="color:#fff; font-size:1.5rem; margin-bottom:12px;">Vous souhaitez nous rejoindre ?</h3>
+        <p style="color:rgba(255,255,255,.9); margin-bottom:28px; font-size:1.05rem;">Le Chœur Icône est ouvert à tous les amateurs de chant choral.<br>Répétitions les mardis de 20h à 22h, Métro Stalingrad/Riquet, Paris 19<sup>e</sup>.</p>
+        <a href="mailto:choeur.icone@gmail.com" class="btn btn-white">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fermer">✕</button>
+  <button class="lightbox-prev" onclick="navLightbox(-1)" aria-label="Précédent">‹</button>
+  <img id="lightboxImg" src="" alt="" style="transition:opacity .15s;">
+  <button class="lightbox-next" onclick="navLightbox(1)" aria-label="Suivant">›</button>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col"><h4>Chœur Icône</h4><p>Une chorale du 19<sup>e</sup> arrondissement de Paris, fondée en septembre 2005.<br>Association loi 1901.</p></div>
+    <div class="footer-col"><h4>Navigation</h4><p><a href="index.html">Bienvenue</a><br><a href="presentation.html">Présentation</a><br><a href="repertoire.html">Répertoire 2026-2027</a><br><a href="concerts.html">Concerts</a><br><a href="convivialite.html">Convivialité</a></p></div>
+    <div class="footer-col"><h4>Contact</h4><p><a href="mailto:choeur.icone@gmail.com">choeur.icone@gmail.com</a><br>Répétitions : mardis 20h–22h<br>Métro Stalingrad/Riquet, Paris 19<sup>e</sup></p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Chœur Icône — <a href="mailto:choeur.icone@gmail.com">Nous contacter</a></p></div>
+</footer>
+<script>
+function toggleMenu(btn){const nav=document.getElementById('navLinks');nav.classList.toggle('open');btn.setAttribute('aria-expanded',nav.classList.contains('open'));}
+document.addEventListener('click',function(e){if(!document.querySelector('.site-header').contains(e.target))document.getElementById('navLinks').classList.remove('open');});
+const imgs=Array.from(document.querySelectorAll('.gallery-item img'));
+let current=0;
+function openLightbox(i){current=i;document.getElementById('lightboxImg').src=imgs[i].src;document.getElementById('lightboxImg').alt=imgs[i].alt;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
+function closeLightboxOutside(e){if(e.target===document.getElementById('lightbox'))closeLightbox();}
+function navLightbox(dir){current=(current+dir+imgs.length)%imgs.length;const img=document.getElementById('lightboxImg');img.style.opacity='0';setTimeout(function(){img.src=imgs[current].src;img.alt=imgs[current].alt;img.style.opacity='1';},150);}
+document.addEventListener('keydown',function(e){if(!document.getElementById('lightbox').classList.contains('open'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')navLightbox(-1);if(e.key==='ArrowRight')navLightbox(1);});
+</script>
+</body>
+</html>
