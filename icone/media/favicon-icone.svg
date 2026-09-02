@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <rect width="240" height="240" fill="#16120D"/>
+  <text x="12" y="158" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="72" fill="#F3ECDD">Ic</text>
+  <text x="157" y="158" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="72" fill="#F3ECDD">ne</text>
+  <path d="M89 90 L114 62 L139 90" fill="none" stroke="#F3ECDD" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="114" cy="132" r="38" fill="#D9A536" stroke="#fff" stroke-width="3" stroke-opacity=".85"/>
+  <circle cx="114" cy="132" r="27" fill="none" stroke="#8B5E15" stroke-width="2" opacity=".45"/>
+  <circle cx="114" cy="132" r="12" fill="#C1461C"/>
+  <circle cx="114" cy="132" r="2.6" fill="#fff"/>
+</svg>
