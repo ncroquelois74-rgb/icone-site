@@ -26,15 +26,28 @@
     <p>Vingt ans de scène, de musique et de souvenirs partagés</p>
   </section>
 
-  <!-- Photo principale -->
+  <!-- Galerie photos -->
   <section class="section">
     <div class="container">
       <div class="section-title">
         <h2>Le Chœur Icône en concert</h2>
-        <p>Quelques images des saisons passées</p>
+        <p>Vingt ans de scène, de nos débuts à aujourd'hui — cliquez sur un concert pour voir toutes ses photos</p>
       </div>
-      <div style="border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-hover); max-width:800px; margin:0 auto;">
-        <img src="http://choeuricone.free.fr/Icone/Bienvenue_files/Accueil.jpg" alt="Le Chœur Icône en concert" style="width:100%; height:auto;">
+      <div class="concert-grid" id="concertGrid">
+        <div class="concert-card" onclick="openConcert(0)"><img src="media/concerts/sjd-2026/02.jpg" alt="Salle Jean Dame — Nos 20 ans (2026)" loading="lazy"><span class="cc-count">5 photos</span><div class="cc-overlay"><div class="cc-title">Salle Jean Dame — Nos 20 ans</div><div class="cc-year">2026</div></div></div>
+        <div class="concert-card" onclick="openConcert(1)"><img src="media/concerts/msv-2026/02.jpg" alt="Montreuil-Sous-Voix (2026)" loading="lazy"><span class="cc-count">5 photos</span><div class="cc-overlay"><div class="cc-title">Montreuil-Sous-Voix</div><div class="cc-year">2026</div></div></div>
+        <div class="concert-card" onclick="openConcert(2)"><img src="media/concerts/clavel-2025/03.jpg" alt="Théâtre Clavel (2025)" loading="lazy"><span class="cc-count">9 photos</span><div class="cc-overlay"><div class="cc-title">Théâtre Clavel</div><div class="cc-year">2025</div></div></div>
+        <div class="concert-card" onclick="openConcert(3)"><img src="media/concerts/sjd-2024/03.jpg" alt="Salle Jean Dame (2024)" loading="lazy"><span class="cc-count">11 photos</span><div class="cc-overlay"><div class="cc-title">Salle Jean Dame</div><div class="cc-year">2024</div></div></div>
+        <div class="concert-card" onclick="openConcert(4)"><img src="media/concerts/sjd-2019/03.jpg" alt="Salle Jean Dame (2019)" loading="lazy"><span class="cc-count">11 photos</span><div class="cc-overlay"><div class="cc-title">Salle Jean Dame</div><div class="cc-year">2019</div></div></div>
+        <div class="concert-card" onclick="openConcert(5)"><img src="media/concerts/sjd-2018/05.jpg" alt="Salle Jean Dame (2018)" loading="lazy"><span class="cc-count">12 photos</span><div class="cc-overlay"><div class="cc-title">Salle Jean Dame</div><div class="cc-year">2018</div></div></div>
+        <div class="concert-card" onclick="openConcert(6)"><img src="media/concerts/sjd-2017/04.jpg" alt="Salle Jean Dame (2017)" loading="lazy"><span class="cc-count">11 photos</span><div class="cc-overlay"><div class="cc-title">Salle Jean Dame</div><div class="cc-year">2017</div></div></div>
+        <div class="concert-card" onclick="openConcert(7)"><img src="media/concerts/rb-2016/03.jpg" alt="Théâtre La Reine Blanche (2016)" loading="lazy"><span class="cc-count">6 photos</span><div class="cc-overlay"><div class="cc-title">Théâtre La Reine Blanche</div><div class="cc-year">2016</div></div></div>
+        <div class="concert-card" onclick="openConcert(8)"><img src="media/concerts/rb-2015/03.jpg" alt="Théâtre La Reine Blanche (2015)" loading="lazy"><span class="cc-count">7 photos</span><div class="cc-overlay"><div class="cc-title">Théâtre La Reine Blanche</div><div class="cc-year">2015</div></div></div>
+        <div class="concert-card" onclick="openConcert(9)"><img src="media/concerts/rb-2014/04.jpg" alt="Théâtre La Reine Blanche (2014)" loading="lazy"><span class="cc-count">9 photos</span><div class="cc-overlay"><div class="cc-title">Théâtre La Reine Blanche</div><div class="cc-year">2014</div></div></div>
+        <div class="concert-card" onclick="openConcert(10)"><img src="media/concerts/rb-2013/04.jpg" alt="Théâtre La Reine Blanche (2013)" loading="lazy"><span class="cc-count">7 photos</span><div class="cc-overlay"><div class="cc-title">Théâtre La Reine Blanche</div><div class="cc-year">2013</div></div></div>
+        <div class="concert-card" onclick="openConcert(11)"><img src="media/concerts/rb-2012/06.jpg" alt="Théâtre La Reine Blanche (2012)" loading="lazy"><span class="cc-count">13 photos</span><div class="cc-overlay"><div class="cc-title">Théâtre La Reine Blanche</div><div class="cc-year">2012</div></div></div>
+        <div class="concert-card" onclick="openConcert(12)"><img src="media/concerts/adyar-2011/04.jpg" alt="Théâtre Adyar (2011)" loading="lazy"><span class="cc-count">8 photos</span><div class="cc-overlay"><div class="cc-title">Théâtre Adyar</div><div class="cc-year">2011</div></div></div>
+        <div class="concert-card" onclick="openConcert(13)"><img src="media/concerts/archives-2006-2010/17.jpg" alt="Nos débuts (2006-2010)" loading="lazy"><span class="cc-count">30 photos</span><div class="cc-overlay"><div class="cc-title">Nos débuts</div><div class="cc-year">2006-2010</div></div></div>
       </div>
     </div>
   </section>
@@ -73,6 +86,15 @@
     </div>
   </section>
 </main>
+
+<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fermer">✕</button>
+  <button class="lightbox-prev" onclick="navLightbox(-1)" aria-label="Précédent">‹</button>
+  <img id="lightboxImg" src="" alt="" style="transition:opacity .15s;">
+  <button class="lightbox-next" onclick="navLightbox(1)" aria-label="Suivant">›</button>
+  <div class="lightbox-info" id="lightboxInfo"></div>
+</div>
+
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-col"><h4>Chœur Icône</h4><p>Une chorale du 19<sup>e</sup> arrondissement de Paris, fondée en septembre 2005.<br>Association loi 1901.</p></div>
@@ -84,6 +106,47 @@
 <script>
 function toggleMenu(btn){const nav=document.getElementById('navLinks');nav.classList.toggle('open');btn.setAttribute('aria-expanded',nav.classList.contains('open'));}
 document.addEventListener('click',function(e){if(!document.querySelector('.site-header').contains(e.target))document.getElementById('navLinks').classList.remove('open');});
+
+const CONCERTS = [
+  {title:"Salle Jean Dame — Nos 20 ans",year:"2026",cover:1,photos:["media/concerts/sjd-2026/01.jpg","media/concerts/sjd-2026/02.jpg","media/concerts/sjd-2026/03.jpg","media/concerts/sjd-2026/04.jpg","media/concerts/sjd-2026/05.jpg"]},
+  {title:"Montreuil-Sous-Voix",year:"2026",cover:1,photos:["media/concerts/msv-2026/01.jpg","media/concerts/msv-2026/02.jpg","media/concerts/msv-2026/03.jpg","media/concerts/msv-2026/04.jpg","media/concerts/msv-2026/05.jpg"]},
+  {title:"Théâtre Clavel",year:"2025",cover:2,photos:["media/concerts/clavel-2025/01.jpg","media/concerts/clavel-2025/02.jpg","media/concerts/clavel-2025/03.jpg","media/concerts/clavel-2025/04.jpg","media/concerts/clavel-2025/05.jpg","media/concerts/clavel-2025/06.jpg","media/concerts/clavel-2025/07.jpg","media/concerts/clavel-2025/08.jpg","media/concerts/clavel-2025/09.jpg"]},
+  {title:"Salle Jean Dame",year:"2024",cover:2,photos:["media/concerts/sjd-2024/01.jpg","media/concerts/sjd-2024/02.jpg","media/concerts/sjd-2024/03.jpg","media/concerts/sjd-2024/04.jpg","media/concerts/sjd-2024/05.jpg","media/concerts/sjd-2024/06.jpg","media/concerts/sjd-2024/07.jpg","media/concerts/sjd-2024/08.jpg","media/concerts/sjd-2024/09.jpg","media/concerts/sjd-2024/10.jpg","media/concerts/sjd-2024/11.jpg"]},
+  {title:"Salle Jean Dame",year:"2019",cover:2,photos:["media/concerts/sjd-2019/01.jpg","media/concerts/sjd-2019/02.jpg","media/concerts/sjd-2019/03.jpg","media/concerts/sjd-2019/04.jpg","media/concerts/sjd-2019/05.jpg","media/concerts/sjd-2019/06.jpg","media/concerts/sjd-2019/07.jpg","media/concerts/sjd-2019/08.jpg","media/concerts/sjd-2019/09.jpg","media/concerts/sjd-2019/10.jpg","media/concerts/sjd-2019/11.jpg"]},
+  {title:"Salle Jean Dame",year:"2018",cover:4,photos:["media/concerts/sjd-2018/01.jpg","media/concerts/sjd-2018/02.jpg","media/concerts/sjd-2018/03.jpg","media/concerts/sjd-2018/04.jpg","media/concerts/sjd-2018/05.jpg","media/concerts/sjd-2018/06.jpg","media/concerts/sjd-2018/07.jpg","media/concerts/sjd-2018/08.jpg","media/concerts/sjd-2018/09.jpg","media/concerts/sjd-2018/10.jpg","media/concerts/sjd-2018/11.jpg","media/concerts/sjd-2018/12.jpg"]},
+  {title:"Salle Jean Dame",year:"2017",cover:3,photos:["media/concerts/sjd-2017/01.jpg","media/concerts/sjd-2017/02.jpg","media/concerts/sjd-2017/03.jpg","media/concerts/sjd-2017/04.jpg","media/concerts/sjd-2017/05.jpg","media/concerts/sjd-2017/06.jpg","media/concerts/sjd-2017/07.jpg","media/concerts/sjd-2017/08.jpg","media/concerts/sjd-2017/09.jpg","media/concerts/sjd-2017/10.jpg","media/concerts/sjd-2017/11.jpg"]},
+  {title:"Théâtre La Reine Blanche",year:"2016",cover:2,photos:["media/concerts/rb-2016/01.jpg","media/concerts/rb-2016/02.jpg","media/concerts/rb-2016/03.jpg","media/concerts/rb-2016/04.jpg","media/concerts/rb-2016/05.jpg","media/concerts/rb-2016/06.jpg"]},
+  {title:"Théâtre La Reine Blanche",year:"2015",cover:2,photos:["media/concerts/rb-2015/01.jpg","media/concerts/rb-2015/02.jpg","media/concerts/rb-2015/03.jpg","media/concerts/rb-2015/04.jpg","media/concerts/rb-2015/05.jpg","media/concerts/rb-2015/06.jpg","media/concerts/rb-2015/07.jpg"]},
+  {title:"Théâtre La Reine Blanche",year:"2014",cover:3,photos:["media/concerts/rb-2014/01.jpg","media/concerts/rb-2014/02.jpg","media/concerts/rb-2014/03.jpg","media/concerts/rb-2014/04.jpg","media/concerts/rb-2014/05.jpg","media/concerts/rb-2014/06.jpg","media/concerts/rb-2014/07.jpg","media/concerts/rb-2014/08.jpg","media/concerts/rb-2014/09.jpg"]},
+  {title:"Théâtre La Reine Blanche",year:"2013",cover:3,photos:["media/concerts/rb-2013/01.jpg","media/concerts/rb-2013/02.jpg","media/concerts/rb-2013/03.jpg","media/concerts/rb-2013/04.jpg","media/concerts/rb-2013/05.jpg","media/concerts/rb-2013/06.jpg","media/concerts/rb-2013/07.jpg"]},
+  {title:"Théâtre La Reine Blanche",year:"2012",cover:5,photos:["media/concerts/rb-2012/01.jpg","media/concerts/rb-2012/02.jpg","media/concerts/rb-2012/03.jpg","media/concerts/rb-2012/04.jpg","media/concerts/rb-2012/05.jpg","media/concerts/rb-2012/06.jpg","media/concerts/rb-2012/07.jpg","media/concerts/rb-2012/08.jpg","media/concerts/rb-2012/09.jpg","media/concerts/rb-2012/10.jpg","media/concerts/rb-2012/11.jpg","media/concerts/rb-2012/12.jpg","media/concerts/rb-2012/13.jpg"]},
+  {title:"Théâtre Adyar",year:"2011",cover:3,photos:["media/concerts/adyar-2011/01.jpg","media/concerts/adyar-2011/02.jpg","media/concerts/adyar-2011/03.jpg","media/concerts/adyar-2011/04.jpg","media/concerts/adyar-2011/05.jpg","media/concerts/adyar-2011/06.jpg","media/concerts/adyar-2011/07.jpg","media/concerts/adyar-2011/08.jpg"]},
+  {title:"Nos débuts",year:"2006-2010",cover:16,photos:["media/concerts/archives-2006-2010/01.jpg","media/concerts/archives-2006-2010/02.jpg","media/concerts/archives-2006-2010/03.jpg","media/concerts/archives-2006-2010/04.jpg","media/concerts/archives-2006-2010/05.jpg","media/concerts/archives-2006-2010/06.jpg","media/concerts/archives-2006-2010/07.jpg","media/concerts/archives-2006-2010/08.jpg","media/concerts/archives-2006-2010/09.jpg","media/concerts/archives-2006-2010/10.jpg","media/concerts/archives-2006-2010/11.jpg","media/concerts/archives-2006-2010/12.jpg","media/concerts/archives-2006-2010/13.jpg","media/concerts/archives-2006-2010/14.jpg","media/concerts/archives-2006-2010/15.jpg","media/concerts/archives-2006-2010/16.jpg","media/concerts/archives-2006-2010/17.jpg","media/concerts/archives-2006-2010/18.jpg","media/concerts/archives-2006-2010/19.jpg","media/concerts/archives-2006-2010/20.jpg","media/concerts/archives-2006-2010/21.jpg","media/concerts/archives-2006-2010/22.jpg","media/concerts/archives-2006-2010/23.jpg","media/concerts/archives-2006-2010/24.jpg","media/concerts/archives-2006-2010/25.jpg","media/concerts/archives-2006-2010/26.jpg","media/concerts/archives-2006-2010/27.jpg","media/concerts/archives-2006-2010/28.jpg","media/concerts/archives-2006-2010/29.jpg","media/concerts/archives-2006-2010/30.jpg"]},
+];
+
+let currentConcert = 0, currentPhoto = 0;
+function showPhoto(){
+  const c = CONCERTS[currentConcert];
+  document.getElementById('lightboxImg').src = c.photos[currentPhoto];
+  document.getElementById('lightboxImg').alt = c.title + ' (' + c.year + ')';
+  document.getElementById('lightboxInfo').textContent = c.title + ' (' + c.year + ') — ' + (currentPhoto+1) + '/' + c.photos.length;
+}
+function openConcert(ci){
+  currentConcert = ci; currentPhoto = CONCERTS[ci].cover || 0;
+  showPhoto();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
+function closeLightboxOutside(e){if(e.target===document.getElementById('lightbox'))closeLightbox();}
+function navLightbox(dir){
+  const c = CONCERTS[currentConcert];
+  currentPhoto = (currentPhoto + dir + c.photos.length) % c.photos.length;
+  const img = document.getElementById('lightboxImg');
+  img.style.opacity = '0';
+  setTimeout(function(){ showPhoto(); img.style.opacity = '1'; }, 150);
+}
+document.addEventListener('keydown',function(e){if(!document.getElementById('lightbox').classList.contains('open'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')navLightbox(-1);if(e.key==='ArrowRight')navLightbox(1);});
 </script>
 </body>
 </html>

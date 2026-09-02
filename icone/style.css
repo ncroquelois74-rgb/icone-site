@@ -266,6 +266,20 @@ sup { font-size: .65em; }
 .btn-yt:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.2); color: #CC0000; }
 .btn-yt svg { width: 22px; height: 22px; }
 
+.welcome-note { max-width: 640px; margin: 0 auto; text-align: center; font-size: 1.05rem; color: var(--text-light); line-height: 1.8; }
+
+/* ── Concerts ── */
+.concert-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 20px; }
+.concert-card { position: relative; border-radius: var(--radius); overflow: hidden; cursor: pointer; aspect-ratio: 4/3; box-shadow: var(--shadow); transition: box-shadow .25s, transform .25s; }
+.concert-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+.concert-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s ease; }
+.concert-card:hover img { transform: scale(1.06); }
+.concert-card .cc-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,.15) 55%, rgba(0,0,0,0) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 16px; }
+.concert-card .cc-title { color: #fff; font-family: var(--font-h); font-weight: 700; font-size: 1.05rem; line-height: 1.25; }
+.concert-card .cc-year { color: rgba(255,255,255,.85); font-size: .85rem; margin-top: 2px; }
+.concert-card .cc-count { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,.55); color: #fff; font-size: .75rem; font-weight: 600; padding: 4px 10px; border-radius: 20px; }
+.lightbox-info { position: absolute; bottom: 22px; left: 0; right: 0; text-align: center; color: #fff; font-size: .9rem; text-shadow: 0 1px 4px rgba(0,0,0,.7); }
+
 /* ── Convivialité ── */
 .conviv-intro { background: #fff; border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow); margin-bottom: 40px; }
 .conviv-intro p { color: var(--text-light); line-height: 1.8; margin-bottom: 12px; }
@@ -274,7 +288,9 @@ sup { font-size: .65em; }
 .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease, filter .35s; display: block; }
 .gallery-item:hover img { transform: scale(1.06); filter: brightness(1.08); }
 .gallery-item .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); transition: background .3s; display: flex; align-items: flex-end; padding: 12px; }
-.gallery-item:hover .overlay { background: rgba(0,0,0,.25); }
+.gallery-item:hover .overlay { background: rgba(0,0,0,.45); }
+.gallery-caption { color: #fff; font-size: .85rem; font-weight: 600; opacity: 0; transform: translateY(6px); transition: opacity .3s, transform .3s; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
+.gallery-item:hover .gallery-caption { opacity: 1; transform: translateY(0); }
 /* Lightbox */
 .lightbox { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,.92); align-items: center; justify-content: center; }
 .lightbox.open { display: flex; }
