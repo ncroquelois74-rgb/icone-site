@@ -101,11 +101,11 @@ sup { font-size: .65em; }
 .home-hero::before {
   content: ""; position: absolute; inset: 0;
   background: url('media/bienvenue/Accueil.jpg') center/cover no-repeat;
-  filter: saturate(.45) brightness(.92);
+  filter: saturate(.55) hue-rotate(-10deg) contrast(1.05) brightness(.93);
 }
 .home-hero::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(200,64,16,.35) 0%, rgba(224,96,32,.35) 50%, rgba(240,160,48,.35) 100%);
+  background: rgba(20,15,11,.4);
 }
 .home-hero h1 {
   position: relative; z-index: 1;
@@ -230,6 +230,7 @@ sup { font-size: .65em; }
 }
 .vp-exp  { background: #FDE8C0; color: #A05010; }
 .vp-ok   { background: #D8F0D0; color: #2A7020; }
+.vp-full { background: #F0D0D0; color: #A02020; }
 
 /* ── History ── */
 .history-section { background: #fff; }
