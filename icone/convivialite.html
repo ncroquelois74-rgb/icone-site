@@ -106,7 +106,7 @@
 </main>
 
 <div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
-  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fermer">✕</button>
+  <button class="lightbox-close" id="lightboxClose" onclick="closeLightbox()" aria-label="Fermer">✕</button>
   <button class="lightbox-prev" onclick="navLightbox(-1)" aria-label="Précédent">‹</button>
   <img id="lightboxImg" src="" alt="" style="transition:opacity .15s;">
   <button class="lightbox-next" onclick="navLightbox(1)" aria-label="Suivant">›</button>
@@ -138,12 +138,54 @@
 function toggleMenu(btn){const nav=document.getElementById('navLinks');nav.classList.toggle('open');btn.setAttribute('aria-expanded',nav.classList.contains('open'));}
 document.addEventListener('click',function(e){if(!document.querySelector('.site-header').contains(e.target))document.getElementById('navLinks').classList.remove('open');});
 const imgs=Array.from(document.querySelectorAll('.gallery-item img'));
-let current=0;
-function openLightbox(i){current=i;document.getElementById('lightboxImg').src=imgs[i].src;document.getElementById('lightboxImg').alt=imgs[i].alt;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
-function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
+let current=0, lastFocused=null;
+function preload(src){ const im = new Image(); im.src = src; }
+function openLightbox(i){
+  lastFocused = document.activeElement;
+  current=i;document.getElementById('lightboxImg').src=imgs[i].src;document.getElementById('lightboxImg').alt=imgs[i].alt;
+  preload(imgs[(i+1)%imgs.length].src);
+  preload(imgs[(i-1+imgs.length)%imgs.length].src);
+  document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';
+  document.getElementById('lightboxClose').focus();
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';
+  if(lastFocused){ lastFocused.focus(); lastFocused = null; }
+}
 function closeLightboxOutside(e){if(e.target===document.getElementById('lightbox'))closeLightbox();}
-function navLightbox(dir){current=(current+dir+imgs.length)%imgs.length;const img=document.getElementById('lightboxImg');img.style.opacity='0';setTimeout(function(){img.src=imgs[current].src;img.alt=imgs[current].alt;img.style.opacity='1';},150);}
-document.addEventListener('keydown',function(e){if(!document.getElementById('lightbox').classList.contains('open'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')navLightbox(-1);if(e.key==='ArrowRight')navLightbox(1);});
+function navLightbox(dir){
+  current=(current+dir+imgs.length)%imgs.length;const img=document.getElementById('lightboxImg');img.style.opacity='0';
+  setTimeout(function(){
+    img.src=imgs[current].src;img.alt=imgs[current].alt;img.style.opacity='1';
+    preload(imgs[(current+1)%imgs.length].src);
+    preload(imgs[(current-1+imgs.length)%imgs.length].src);
+  },150);
+}
+document.addEventListener('keydown',function(e){
+  const lb = document.getElementById('lightbox');
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape'){ closeLightbox(); return; }
+  if(e.key==='ArrowLeft'){ navLightbox(-1); return; }
+  if(e.key==='ArrowRight'){ navLightbox(1); return; }
+  if(e.key==='Tab'){
+    const focusables = [document.getElementById('lightboxClose'), lb.querySelector('.lightbox-prev'), lb.querySelector('.lightbox-next')];
+    const idx = focusables.indexOf(document.activeElement);
+    e.preventDefault();
+    const next = e.shiftKey ? (idx<=0 ? focusables.length-1 : idx-1) : (idx===focusables.length-1 ? 0 : idx+1);
+    focusables[next].focus();
+  }
+});
+(function(){
+  const lb = document.getElementById('lightbox');
+  let touchStartX = null;
+  lb.addEventListener('touchstart', function(e){ touchStartX = e.changedTouches[0].clientX; }, {passive:true});
+  lb.addEventListener('touchend', function(e){
+    if(touchStartX===null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if(Math.abs(dx) > 40) navLightbox(dx < 0 ? 1 : -1);
+    touchStartX = null;
+  }, {passive:true});
+})();
 document.querySelectorAll('.gallery-item').forEach(function(el){
   el.addEventListener('keydown', function(e){
     if(e.key==='Enter'||e.key===' '){ e.preventDefault(); el.click(); }

@@ -122,7 +122,7 @@
 </main>
 
 <div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
-  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fermer">✕</button>
+  <button class="lightbox-close" id="lightboxClose" onclick="closeLightbox()" aria-label="Fermer">✕</button>
   <button class="lightbox-prev" onclick="navLightbox(-1)" aria-label="Précédent">‹</button>
   <img id="lightboxImg" src="" alt="" style="transition:opacity .15s;">
   <button class="lightbox-next" onclick="navLightbox(1)" aria-label="Suivant">›</button>
@@ -172,20 +172,29 @@ const CONCERTS = [
   {title:"Nos débuts",year:"2006-2010",cover:16,photos:["media/concerts/archives-2006-2010/01.jpg","media/concerts/archives-2006-2010/02.jpg","media/concerts/archives-2006-2010/03.jpg","media/concerts/archives-2006-2010/04.jpg","media/concerts/archives-2006-2010/05.jpg","media/concerts/archives-2006-2010/06.jpg","media/concerts/archives-2006-2010/07.jpg","media/concerts/archives-2006-2010/08.jpg","media/concerts/archives-2006-2010/09.jpg","media/concerts/archives-2006-2010/10.jpg","media/concerts/archives-2006-2010/11.jpg","media/concerts/archives-2006-2010/12.jpg","media/concerts/archives-2006-2010/13.jpg","media/concerts/archives-2006-2010/14.jpg","media/concerts/archives-2006-2010/15.jpg","media/concerts/archives-2006-2010/16.jpg","media/concerts/archives-2006-2010/17.jpg","media/concerts/archives-2006-2010/18.jpg","media/concerts/archives-2006-2010/19.jpg","media/concerts/archives-2006-2010/20.jpg","media/concerts/archives-2006-2010/21.jpg","media/concerts/archives-2006-2010/22.jpg","media/concerts/archives-2006-2010/23.jpg","media/concerts/archives-2006-2010/24.jpg","media/concerts/archives-2006-2010/25.jpg","media/concerts/archives-2006-2010/26.jpg","media/concerts/archives-2006-2010/27.jpg","media/concerts/archives-2006-2010/28.jpg","media/concerts/archives-2006-2010/29.jpg","media/concerts/archives-2006-2010/30.jpg"]},
 ];
 
-let currentConcert = 0, currentPhoto = 0;
+let currentConcert = 0, currentPhoto = 0, lastFocused = null;
+function preload(src){ const im = new Image(); im.src = src; }
 function showPhoto(){
   const c = CONCERTS[currentConcert];
   document.getElementById('lightboxImg').src = c.photos[currentPhoto];
   document.getElementById('lightboxImg').alt = c.title + ' (' + c.year + ')';
   document.getElementById('lightboxInfo').textContent = c.title + ' (' + c.year + ') — ' + (currentPhoto+1) + '/' + c.photos.length;
+  preload(c.photos[(currentPhoto + 1) % c.photos.length]);
+  preload(c.photos[(currentPhoto - 1 + c.photos.length) % c.photos.length]);
 }
 function openConcert(ci){
+  lastFocused = document.activeElement;
   currentConcert = ci; currentPhoto = CONCERTS[ci].cover || 0;
   showPhoto();
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
+  document.getElementById('lightboxClose').focus();
 }
-function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+  if(lastFocused){ lastFocused.focus(); lastFocused = null; }
+}
 function closeLightboxOutside(e){if(e.target===document.getElementById('lightbox'))closeLightbox();}
 function navLightbox(dir){
   const c = CONCERTS[currentConcert];
@@ -194,7 +203,31 @@ function navLightbox(dir){
   img.style.opacity = '0';
   setTimeout(function(){ showPhoto(); img.style.opacity = '1'; }, 150);
 }
-document.addEventListener('keydown',function(e){if(!document.getElementById('lightbox').classList.contains('open'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')navLightbox(-1);if(e.key==='ArrowRight')navLightbox(1);});
+document.addEventListener('keydown',function(e){
+  const lb = document.getElementById('lightbox');
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape'){ closeLightbox(); return; }
+  if(e.key==='ArrowLeft'){ navLightbox(-1); return; }
+  if(e.key==='ArrowRight'){ navLightbox(1); return; }
+  if(e.key==='Tab'){
+    const focusables = [document.getElementById('lightboxClose'), lb.querySelector('.lightbox-prev'), lb.querySelector('.lightbox-next')];
+    const idx = focusables.indexOf(document.activeElement);
+    e.preventDefault();
+    const next = e.shiftKey ? (idx<=0 ? focusables.length-1 : idx-1) : (idx===focusables.length-1 ? 0 : idx+1);
+    focusables[next].focus();
+  }
+});
+(function(){
+  const lb = document.getElementById('lightbox');
+  let touchStartX = null;
+  lb.addEventListener('touchstart', function(e){ touchStartX = e.changedTouches[0].clientX; }, {passive:true});
+  lb.addEventListener('touchend', function(e){
+    if(touchStartX===null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if(Math.abs(dx) > 40) navLightbox(dx < 0 ? 1 : -1);
+    touchStartX = null;
+  }, {passive:true});
+})();
 document.querySelectorAll('.concert-card').forEach(function(el){
   el.addEventListener('keydown', function(e){
     if(e.key==='Enter'||e.key===' '){ e.preventDefault(); el.click(); }
